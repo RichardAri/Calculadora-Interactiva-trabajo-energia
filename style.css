@@ -1,50 +1,75 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-    width: 80%;
-    margin: auto;
-    padding-top: 30px;
-    text-align: center;
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
 }
 
 h1 {
-    color: #333;
+  color: #0112ff;
+  margin-top: 20px;
 }
 
+/* Estilo de los controles */
 .controls {
-    margin: 20px 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 20px;
+}
+
+.control-item {
+  margin: 10px;
+  min-width: 250px;
+  text-align: left;
 }
 
 .controls label {
-    font-weight: bold;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .controls input {
-    width: 200px;
+  width: 100%;
 }
 
+/* Estilo del área de simulación */
 .simulation-area {
-    margin-top: 40px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-canvas {
-    background-color: #fff;
-    border: 1px solid #ccc;
+#simulationCanvas {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: auto;
 }
 
+/* Estilo de los resultados */
 .results {
-    margin-top: 20px;
-    font-size: 1.2em;
+  margin: 20px 0;
+  font-size: 1.2em;
+  text-align: center;
 }
 
-#workResult, #kineticEnergy, #potentialEnergy {
-    font-weight: bold;
+.results p {
+  margin: 5px 0;
+}
+
+#timeResult,
+#rangeResult,
+#maxHeightResult,
+#velocityResult {
+  font-weight: bold;
 }
