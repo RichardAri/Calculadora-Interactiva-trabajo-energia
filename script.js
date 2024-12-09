@@ -112,7 +112,7 @@ function calculateMaxHeight() {
 // Calcular el alcance total de la trayectoria
 function calculateRange() {
   let angleRad = radians(launchAngle);
-  return Math.pow(initialSpeed, 2) * Math.sin(2 * angleRad) / gravity;
+  return (Math.pow(initialSpeed, 2) * Math.sin(2 * angleRad)) / gravity;
 }
 
 // Precomputar la trayectoria completa
