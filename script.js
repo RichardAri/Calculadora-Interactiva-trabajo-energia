@@ -47,12 +47,19 @@ function draw() {
   x = vX * time;
   y = vY * time - 0.5 * gravity * time * time;
 
+  // Actualizar la altura máxima solo cuando el proyectil esté ascendiendo
+  if (y > maxHeight) {
+    maxHeight = y;
+  }
+
   // Detener el proyectil al tocar el suelo
   if (y <= 0) {
     y = 0;
     trajectory.push({ x: x, y: y });
     isInFlight = false;
     noLoop();
+    range = calculateRange(); // Calcular el alcance cuando el proyectil toca el suelo
+    select("#rangeResult").html(range.toFixed(2) + " m");
   } else {
     trajectory.push({ x: x, y: y });
   }
@@ -86,7 +93,6 @@ function draw() {
   );
 
   // Actualizar resultados
-  maxHeight = calculateMaxHeight();
   select("#maxHeightResult").html(maxHeight.toFixed(2) + " m");
 
   // Actualizar tiempo de vuelo
@@ -103,6 +109,28 @@ function calculateMaxHeight() {
   return Math.pow(initialSpeed * Math.sin(angleRad), 2) / (2 * gravity);
 }
 
+// Calcular el alcance total de la trayectoria
+function calculateRange() {
+  let angleRad = radians(launchAngle);
+  return Math.pow(initialSpeed, 2) * Math.sin(2 * angleRad) / gravity;
+}
+
+// Precomputar la trayectoria completa
+function precomputeTrajectory() {
+  trajectory = [];
+  let t = 0;
+  let angleRad = radians(launchAngle);
+  let vX = initialSpeed * cos(angleRad);
+  let vY = initialSpeed * sin(angleRad);
+  while (true) {
+    let posX = vX * t;
+    let posY = vY * t - 0.5 * gravity * t * t;
+    if (posY < 0) break;
+    trajectory.push({ x: posX, y: posY });
+    t += 0.1; // Incremento de tiempo para precomputar
+  }
+}
+
 function updateValues() {
   initialSpeed = speedSlider.value();
   launchAngle = angleSlider.value();
@@ -115,12 +143,16 @@ function updateValues() {
   // Reiniciar valores
   trajectory = [];
   time = 0;
+  maxHeight = 0;
   range = 0;
   isInFlight = true;
 
   // Reiniciar resultados mostrados
   select("#timeResult").html("0 s");
   select("#velocityResult").html("0 m/s");
+
+  // Precomputar la trayectoria y reiniciar los resultados
+  precomputeTrajectory();
 
   loop();
 }
