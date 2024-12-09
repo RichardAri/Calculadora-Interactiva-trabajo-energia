@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding-top: 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.controls {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.controls label {
+    font-weight: bold;
+}
+
+.controls input {
+    width: 200px;
+}
+
+.simulation-area {
+    margin-top: 40px;
+}
+
+canvas {
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.results {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+#workResult, #kineticEnergy, #potentialEnergy {
+    font-weight: bold;
+}
