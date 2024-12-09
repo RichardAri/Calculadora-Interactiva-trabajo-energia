@@ -1,1 +1,1 @@
-# Calculadora-Interactiva-trabajo-energia
+# Simulador-de-Proyectil-en-2D
