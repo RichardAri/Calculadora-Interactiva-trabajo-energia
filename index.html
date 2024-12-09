@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Trabajo y Energía</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+<body>
+    <div class="container">
+        <h1>Simulador de Trabajo y Energía</h1>
+
+        <!-- Parámetros del simulador -->
+        <div class="controls">
+            <label for="force">Fuerza (N): </label>
+            <input type="range" id="force" min="0" max="50" step="1" value="10">
+            <span id="forceValue">10 N</span>
+
+            <label for="mass">Masa (kg): </label>
+            <input type="range" id="mass" min="1" max="10" step="0.1" value="5">
+            <span id="massValue">5 kg</span>
+
+            <label for="distance">Distancia (m): </label>
+            <input type="range" id="distance" min="0" max="10" step="0.1" value="5">
+            <span id="distanceValue">5 m</span>
+        </div>
+
+        <!-- Área de simulación -->
+        <div class="simulation-area">
+            <canvas id="simulationCanvas" width="600" height="200"></canvas>
+        </div>
+
+        <!-- Resultados -->
+        <div class="results">
+            <p>Trabajo realizado: <span id="workResult">0 J</span></p>
+            <p>Energía cinética: <span id="kineticEnergy">0 J</span></p>
+            <p>Energía potencial: <span id="potentialEnergy">0 J</span></p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
